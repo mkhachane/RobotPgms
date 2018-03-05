@@ -1,0 +1,20 @@
+*** Setting ***
+Library     ${CURDIR}/calc.py
+
+
+
+*** Test Cases ***
+Test case1
+  ${result} =  calc.add   ${3}    ${5}  
+  Should Be Equal As Integers   ${result}    ${8} 
+#Test case2
+#  ${result} =  calc.sub   ${20}    ${14}
+#  Should Be Equal As Integers   ${result}    ${6}
+#Test case3
+#  ${result} =  calc.mul   ${6}    ${8}
+#  Should Be Equal As Integers   ${result}    ${48}
+#Test case4
+#  ${result} =  calc.div   ${40}    ${8}
+#  Should Be Equal As Integers   ${result}    ${5}
+
+

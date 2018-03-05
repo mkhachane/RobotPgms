@@ -1,0 +1,32 @@
+*** Settings ***
+Documentation     Directory
+Library  OperatingSystem
+Library  Collections
+Library  ${CURDIR}/list.py
+
+
+
+*** test cases ***
+Test1: Insert 
+
+   ${a}=   Get File   ${CURDIR}/list.json
+   ${f}=   evaluate    json.loads('''${a}''')    json
+   ${result} =  list.Insert      ${f["b"]}   ${f["c"]}   ${f["d"]} 
+   Should BE Equal As Strings  ${result}     {'address': u'Lichi Flora', 'id': 5, 'name': u'Kush'}
+
+Test2: Search 
+   ${a}=   Get file   list.json
+   ${f}=   evaluate    json.loads('''${a}''')    json
+   ${result} =  list.Search      ${f["a"]}  
+
+   ${x}=   Get file    list2.json
+   ${y}=   evaluate    json.loads('''${x}''')    json     
+   Should Be Equal     ${result}    ${y}
+
+
+
+Test3: Remove 
+    ${a}=   Get File   ${CURDIR}/list.json
+    ${s}=   evaluate    json.loads('''${a}''')    json
+    ${result} =  list.Remove    ${s["e"]}
+    Should Be Equal As Strings     ${result}     True

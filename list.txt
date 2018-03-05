@@ -1,0 +1,18 @@
+*** Setting ***
+Library    ${CURDIR}/list.py
+
+
+*** Test Cases ***
+Test case1
+  ${result} =  list.Search   ${1}
+  Should Be Equal As Strings   ${result}  {'address': 'Kunal Icon', 'id': 1, 'name': 'Harsh'}
+
+Test case3
+  ${result} =  list.Insert   ${4}   'Mak'   'Nath Villa'
+  Should Be Equal As Strings  ${result}    {'address': u"'Nath Villa'", 'id': 4, 'name': u"'Mak'"}
+
+Test case2
+  ${result} =  list.Remove   ${3}
+  Should Be Equal As Strings   ${result}   True
+
+

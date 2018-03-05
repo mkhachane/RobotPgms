@@ -1,0 +1,32 @@
+*** Settings ***
+Documentation     Calculator
+Library  OperatingSystem
+LIbrary  Collections
+Library  ${CURDIR}/calc.py
+
+*** test cases ***
+
+T1: Add
+   ${o}   Get File   calci.json
+   ${t}   Evaluate    json.loads('''${o}''')   json
+   ${result}=   calc.add  ${t["a"]}   ${t["b"]}  
+   Should Be Equal As Integers     ${result}    ${t["c"]}
+
+T1: Sub
+   ${o}   Get File   calci.json
+   ${t}   Evaluate    json.loads('''${o}''')   json
+   ${result}=   calc.sub  ${t["a"]}   ${t["b"]}  
+   Should Be Equal As Integers     ${result}    ${t["d"]}
+
+T1: Mul
+   ${o}   Get File   calci.json
+   ${t}   Evaluate    json.loads('''${o}''')   json
+   ${result}=   calc.mul  ${t["a"]}   ${t["b"]}  
+   Should Be Equal As Integers     ${result}    ${t["e"]}
+
+T1: Div
+   ${o}   Get File   calci.json
+   ${t}   Evaluate    json.loads('''${o}''')   json
+   ${result}=   calc.div  ${t["a"]}   ${t["b"]}  
+   Should Be Equal As Integers     ${result}    ${t["g"]}
+
